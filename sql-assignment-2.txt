@@ -1,0 +1,57 @@
+Assignment - 2
+
+
+1.  SELECT * FROM EMP where job = 'MANAGER'
+
+2.  SELECT ename, sal from EMP
+group by ename, sal
+having ((sal*12)/12)>1000
+
+3.  Select ename, sal from EMP where ename != 'JAMES'
+
+4.  Select * from EMP where ename like 'S%'
+
+5.  SELECT * FROM EMP where ename like '%A%'
+
+6.  Select * from EMP where ename like '___L%'
+
+7.  
+create  or alter proc getDailySal(@ empname varchar(20))
+as 
+begin
+Select ename, empno, job, (sal/30) 'Daily Salary' from EMP where ename = @empname
+end
+
+execute getDailySal 'JONES'
+
+8.  Select sum(sal) as 'Total Monthly Salary' from EMP
+
+9.SELECT avg(sal*12) as 'Average Annual Salary'  from EMP
+
+10.  SELECT ename,job, sal, deptno from EMP 
+where job != 'SALESMAN'
+
+11.  SELECT DISTINCT(dname) FROM EMP inner join DEPT on  EMP.deptno = DEPT.deptno;
+
+
+12.  SELECT ename as ' Employee' , sal as 'Monthly Salary' from EMP 
+WHERE sal>1500
+group by ename 
+having deptno = 10 or deptno = 30
+
+13.  Select ename, job , sal from EMP 
+WHERE job = 'MANAGER' or job = 'ANALYST'
+group by sal
+having sal != 1000 or sal != 3000 or sal!= 5000
+
+14.  SELECT ename, sal, comm from EMP 
+where comm > (sal+(sal*10/100))
+
+15.  SELECT ename,job, deptno, mgr_id from EMP 
+where (ename like '%ll%' or ename like '%l%l%')
+group by ename
+having deptno = 30 or mgr_id = 7782
+
+17.  SELECT d.dname, e.ename 
+from DEPT d inner join EMP e on d.deptno = e.deptno
+order by dname ASC,ename DESC

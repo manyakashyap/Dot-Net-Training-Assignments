@@ -1,0 +1,50 @@
+Assignment 1:
+
+1. Select * from EMP_M where ename like'A%
+
+
+2.  SELECT ename, empno, from EMP_M where mgr_id = null
+
+
+3.  SELECT ename, empno, sal from EMP_M where sal>=1200 and sal<=1400
+
+
+4.  SELECT  d.dname, e.ename, e.sal
+      from EMP_M e  inner join  DEPT_M d
+      on e.deptno =d.deptno
+      where d.deptno=20
+
+      update EMP_M set sal=sal+(sal*10/100) where deptno=20
+       
+      SELECT  d.dname, e.ename, e.sal
+      from EMP_M e  inner join  DEPT_M d
+      on e.deptno =d.deptno
+      where d.deptno=20
+
+
+
+5.  SELECT count(job) as 'Number of Clerk Employed' from EMP_M  where job = 'Clerk'
+
+
+6.  SELECT job, avg(sal) as 'Average Salary', count(empno) as 'Total count of the Employee' from EMP_M 
+      group by job
+
+
+7.  SELECT sal, ename max(sal), min(sal) from EMP_M 
+      group by ename
+
+
+9.  SELECT ename, sal from EMP_M where job = 'Analyst' and sal>=1200
+     group by ename, job, sal 
+     having deptno =20
+     order by ename ASC
+      
+
+12. SELECT *  from EMP_M where ename like 'M%' or ename like 'A%'
+
+
+13.  SELECT ename, empno, (sal*12) as  'Yearly Salary'  from EMP_M where ename = 'Smith'
+
+
+14. SELECT ename, sal from EMP_M where sal not between 1500 and 2850
+

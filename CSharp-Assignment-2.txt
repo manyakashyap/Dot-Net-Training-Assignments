@@ -1,0 +1,181 @@
+CSharp Assignment - 2
+
+String Questions:
+
+Q1. Length of String
+
+public class String
+{
+    public static void Main()
+    {
+        string S;
+        int count = 0;
+
+        Console.WriteLine("Program to find out lenth of a given word:");
+
+        Console.WriteLine("Enter the string:");
+        S = Console.ReadLine();
+
+        foreach(char c in S)
+        {
+            count++;
+        }
+
+        Console.WriteLine("Length of the given string is :{0}", S);
+        Console.ReadLine();
+    }
+}
+
+Q2. Reverse String:
+
+class ReverseString
+{
+    static void Main()
+    {
+        string S;
+        int i=0, j=0;
+        j = S.Length - 1; // Get length of string
+        
+        Console.WriteLine("Enter a string to reverse: ");
+        S = Console.ReadLine();
+
+        while(i < j)
+        {
+            temp = S[j];
+            S[j] = s[i];
+            s[i] = temp;
+
+            i++;
+            j--;
+        }
+
+        Console.WriteLine("Reversed String is :", + S);
+        Console.ReadLine();
+    }
+}
+
+
+Q3.  Compare Two Words:
+
+class CompareString
+{
+    static void Main()
+    {
+        string wrd1, wrd2;
+    
+        Console.WriteLine("Check Whether two strings are equal or not?");
+        Console.Whether("Input first word:");
+        wrd1 = Console.ReadLine();
+
+        Console.Whether("Input second word:");
+        wrd2 = Console.ReadLine();
+
+        if(String.Equals(wrd1,wrd2))
+        {
+            Consol.WriteLine("String {0} and {1} are equal", wrd1,wrd2);
+
+        }
+        else
+        {
+            Consol.WriteLine("String {0} and {1} are not equal", wrd1,wrd2);
+        }
+        Console.ReadLine();
+    }
+}
+
+
+Classes and Constructors:
+
+Q2. 
+
+class Student
+{
+    int RollNo, Sem;
+    string Stdname, Class, Branch;
+    public int [] Marks = new int[5];
+    public string Result;
+    public int avg;
+
+    public Student(int RollNo, int Sem, string Stdname, string Class, string Branch)
+    {
+        this.RollNo = RollNo;
+        this.Stdname = Stdname;
+        this.Sem = Sem;
+        this.Class = Class;
+        this.Branch = Branch;
+    }
+
+    public GetMarks()
+    {
+        Console.WriteLine("Enter the marks for 5 Subjects:");
+        for(int i=0;i<Marks.Length;i++)
+        {
+            Console.Write("Enter Subject {0} Marks :", i+1);
+            Marks[i] = Convert.ToInt32(Console.ReadLine());
+
+            if(Marks < 35)
+            {
+                Result = "FAIL";
+            }
+        }
+    }
+    public void CheckResult()
+    {
+        if(Result == "FAIL")
+        {
+            Console.WriteLine("Result of Student :", + Result);
+        }
+        else
+        {
+            avg = Marks.Average();
+            if(avg < 50)
+            {
+                Result = "FAIL";
+                Console.WriteLine("Result of Student :", + Result);
+            }
+            else
+            {
+                Result = "PASS";
+                Console.WriteLine("Result of Student :", + Result);
+            }
+        }
+    }
+
+    public void DisplayResult()
+    {
+        Console.WriteLine("-------Result-------");
+        Console.WriteLine($"Student Name : {stdname}\n Roll Number : {RollNo} \n Class : {Class} \n Semester : {Sem}\n Branch : {Branch}");
+
+        CheckResult();
+    }
+
+    class test
+    {
+        static void Main()
+        {
+            int RollNo, Sem;
+            string Stdname, class, Branch;
+            Console.WriteLine("Enter Details of Students:");
+            Console.Write("Enter Roll Number:");
+            RollNo = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter Semester:");
+            Sem = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter Class:");
+            Class = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter Student Name:");
+            Stdname = (Console.ReadLine());
+
+            Console.Write("Enter Branch:");
+            Branch = (Console.ReadLine());
+
+            Student Std = new Student(RollNo, Sem, Class, Stdname, Branch);
+            Std.GetMarks();
+            Std.DisplayResult();
+
+            Console.ReadLine();
+        }
+    }  
+}

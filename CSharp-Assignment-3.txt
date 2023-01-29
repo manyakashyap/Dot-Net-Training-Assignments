@@ -1,0 +1,200 @@
+Csharp Assignment-3
+
+Q1.
+
+class Program
+{
+    public string Str1, Str2;
+
+    public static void Display(string Str_Upper_1, string Str_Upper_2)
+    {
+        Str1 = Str_Upper_1.ToUpper();
+        Console.WriteLine(Str1);
+        Str2 = Str_Upper_2.ToUpper();
+        Console.WriteLine(Str2);
+        Console.ReadLine();
+
+    }
+    public static void Main()
+    {
+        string S1,S2;
+        S1 = "FirstName";
+        S2 = "LastName";
+
+        Display(S1,S2);
+        Console.ReadLine();
+    }
+}
+
+
+Q2. 
+
+class LetterOccurrences
+{
+    public int NoOfLetters(string str, char character)
+    {
+        int count = 0;
+        for(int i=0;i<str.Length;i++)
+        {
+            if(str[i] == character)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    static void Main()
+    {
+        string S, ch;
+        Console.WriteLine("Enter a string:");
+        S = Console.ReadLine();
+
+        Console.WriteLine("Enter a character to count occurrence:");
+        ch = Char.Parse(Console.ReadLine());
+
+        Console.WriteLine(NoOfLetters(S, ch));
+        Console.ReadLine();
+    }
+}
+
+
+Q3.
+
+class Saledetails
+{
+    public int Salesno, Productno, Price, Qty;
+    public DateTime dateofsale;  
+    public float TotalAmount;
+
+    public Salesetails(int Salesno, int Productno, int Price, int Qty, DateTime dateofsale, float TotalAmount );
+    {
+        this.Salesno = Salesno;
+        this.Productno = Productno;
+        this.Price = Price;
+        this.Qty = Qty;
+        this.dateofsale = dateofsale;
+    }
+
+    public void Sales(int qty, int price)
+    {
+        Totalamount = qty * price;
+    }
+
+    public void ShowData()
+    {
+        Console.WriteLine("Product Number:", Productno);
+        Console.WriteLine("Sales Number:", Salesno);
+        Console.WriteLine("Quantity:", Qty);
+        Console.WriteLine("Price:", Price);
+        Console.WriteLine("Date of Sale:", dateofsale);
+        Console.WriteLine("Total Amount:", TotalAmount);
+    }
+
+    class test
+    {
+        static void Main()
+        {
+            Saledetails Sale = new Saledetails();
+            Console.Write("Enter Sales No:");
+            Sale.sno = int.Parse(Console.ReadLine());
+            Console.Write("Enter Product No:");
+            Sale.Prodno = int.Parse(Console.ReadLine());
+            Console.Write("Enter the no of Quantity:");
+            Sale.Q = int.Parse(Console.ReadLine());
+            Console.Write("Enter the Price of the product:");
+            Sale.prc = float.Parse(Console.ReadLine());
+
+            Sale.Sales(Sale.Q, Sales.prc);
+            Sale.ShowData();
+
+            Console.ReadLine();
+            
+        }
+    }
+}
+
+
+
+Q4.
+
+class Scholarship
+{
+    public int marks;
+    public float fees;
+
+    public float Merit(int m, float f)
+    {
+        if(m >=70 && m <=80)
+        {
+            return (0.2f * f);
+        }
+        else if(m >80 && m <=90)
+        {
+            return (0.3f * f);
+        }
+        else if(m > 90)
+        {
+            return (0.5f * f);
+        }
+    }
+
+    static void Main()
+    {
+        Scholarship S = new Scholarship();
+        S.marks = int.Parse(Console.ReadLine());
+
+        Console.Write("Enter Fees:");
+        S.fees = float.Parse(Console.ReadLine());
+
+        S.S_amt = S.Merit(S.marks, S.fees);
+        Console.WriteLine("Scholarship Amount:", S.S_amt);
+
+        Console.ReadLine();
+        
+    }
+}
+
+Q5. 
+
+
+Class Doctor
+{
+    int RegnNo;
+    string Name;
+    int FeesCharged;
+
+    public int regnNo
+    {
+        get {return RegnNo; }
+        set { RegnNo = value; }
+    }
+
+    public string Name{
+        get { return name; }
+        set { name = value; }
+    } 
+
+    public int FeesCharged
+    {
+        get{ return Fees; }
+        set{ Fees = value; }
+    }
+
+    class Properties
+    {
+        static void Main()
+        {
+            Doctor D = new Doctor();
+            D.RegnNo = 144;
+            D.Name = "Joe";
+            D.FeesCharged = 500;
+
+            Console.WriteLine($"{D.RegnNo}, {D.Name}, {D.FeesCharged}");
+            Console.ReadLine();
+        }
+    }
+}
+
+
+Submitted By : Manya Kashyap

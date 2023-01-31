@@ -1,0 +1,185 @@
+CSharp Assignment -4
+
+Q1.
+
+namespace Ex1
+{
+    abstract class Student
+    {
+        public string stdname;
+        public int studentId;
+        public float Grade;
+
+        public abstract bool IsPassed(float Grade);
+       
+    }
+
+    class UnderGraduate : Student
+    {
+        public override bool IsPassed(float Grade)
+        {
+            return Grade > 70.0f ? true: false;
+        }
+    }
+
+    class Graduate : Student
+    {
+        public override bool IsPassed(float Grade)
+        {
+            return Grade > 80.0f ? true: false;
+        }
+
+        static void Main()
+        {
+            string Stud_Grad_Type;
+            string stud_name;
+            int stud_Id;
+            float Stud_grade;
+
+            Student Stud;
+
+            Console.WriteLine("Enter Details of Student:");
+
+            Console.WriteLine("Enter Name of the student:");
+            stud_name = Console.ReadLine();
+
+            Console.WriteLine("Enter Id of the Student:");
+            stud_Id = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Type either 'Undergraduate' or 'Graduate':");
+            Stud_Grad_Type = Console.ReadLine();
+
+            if(Stud_Grad_Type == "Graduate")
+            {
+                Stud = new Graduate();
+            }
+            else if(Stud_Grad_Type == "Undergraduate")
+            {
+                Stud = new UnderGraduate();
+            }
+            Stud.name = stud_name;
+            Stud.Id = stud_Id;
+            Stud.grade = 75;
+            Stud.Result =  Stud.IsPassed(75);
+            if(Stud.Result)
+            {
+                Console.WriteLine("PASS");
+            }
+            else{
+                Console.WriteLine("FAIL");
+            }
+            Console.ReadLine();
+        }
+    }   
+}
+
+Q2..
+
+namespace Ticket_Booking
+{
+    class TicketBookingException : ApplicationException
+    {
+        public TicketBookingException(string message) : base(message);
+
+    }
+    class Passenger
+    {
+        public string name;
+        public int age;
+        public int no_of_tickets;
+
+        public TicketBooking(int no_of_tickets)
+        {
+            if(no_of_tickets > 2)
+            {
+                throw new TicketBookingException("Cannot book more than 2 tickets");
+            }
+            else
+            {
+                Console.WriteLine("Ticket Booking Successful...");
+                Console.WriteLine("Passenger Details:");
+                Console.WriteLine("Name of the passenger"+ name);
+                Console.WriteLine("Age of the passenger"+ age);
+                Console.WriteLine("Total number of tickets Booked"+ no_of_tickets);
+            }
+            
+        }
+    }
+
+    class UserDefinedException
+    {
+        static void Main()
+        {
+            Passenger P = new Passenger();
+            Console.Write("Enter your Name:");
+            P.Name = Console.ReadLine();
+            Console.Write("Enter your Age:");
+            P.Age = Convert.ToInt32(Console.ReadLine());
+            
+            try 
+            {
+                P.TicketBooking(4);
+            }
+            catch(TicketBookingException TE)
+            {
+                Console.WriteLine(TE.Message);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+Q3..
+1..
+
+namespace ClassLibraryProject
+{
+    class ConcessionOnFare
+    {
+        const int TotalFare = 500;
+        public void CalculateConcession(int age)
+        {
+            if(age<= 5)
+            {
+                Console.WriteLine("Little Champs - Free Ticket");
+            }
+            else if(age>60)
+            {
+                TotalFare = TotalFare-((TotalFare * 30 )/100);
+                Console.WriteLine("Senior Citizen TotalFare is Rs:" + TotalFare);
+            }
+            else
+            {
+                Console.WriteLine("Ticket Booked. Total Charge is Rs:" + TotalFare);
+            }
+        }
+    }
+}
+
+
+2..
+using System
+using ClassLibraryProject;
+
+namespace LibraryProjectMain
+{
+    class Program
+    {
+        static void Main()
+        {
+            string Name;
+            int age;
+            Console.Write("Enter Name:");
+            Name = Console.ReadLine();
+            ConcessionOnFare.Write(Enter Age:);
+            age = int.Parse(ConcessionOnFare.ReadLine());
+
+            ConcessionOnFare consc = new ConcessionOnFare();
+            Consol.WriteLine("Name:{0}", Name);
+            Consol.WriteLine("Age : {0}", age);
+            concs.CalculateConcession(age);
+            ConcessionOnFare.ReadLine();
+        }
+    }
+}

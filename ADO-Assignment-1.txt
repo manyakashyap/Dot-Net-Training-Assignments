@@ -1,0 +1,147 @@
+ADO Assignment-1
+
+
+1..
+
+CREATE TABLE Code_Employee
+( empno int Pimary key,
+   empname varchar(35) not null,
+   empsal numeric(10,2) chksal check(empsal>= 2500),
+   emptype char(1) etype check(emptype in ('P', 'F'))
+
+
+Insert Into Code_Employee 
+values(20, 'James', 30000, 'P'),
+(30, 'John', 35000, 'P')
+(40, 'Shawn', 40000, 'F')
+(50, 'Jack', 45000, 'P')
+
+
+
+
+2...
+
+Create Procedure EnterNewRecords @EmpNo int, @EmpName varchar(35), @EmpSal numeric(10,2), @EmpType char(1)
+AS
+Begin
+Insert Into Code_Employee(empno, empname, empsal, emptype) values(@EmpNo, @EmpName,  @EmpSal, @EmpType)
+End
+
+Ececute EnterNewRecords  30, 'Jolly',  46000,  'F'
+
+
+
+
+3 & 4......
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace ConnectedArchitectureExercise
+{
+    class Employee
+    {
+
+        public static SqlConnection conn;
+        public static SqlCommand cmd;
+        public static SqlDataReader dr;
+
+        static SqlConnection getconnection()
+        {
+            conn = new SqlConnection("Data Source=LAPTOP-6F0KDF5Q;Initial Catalog=MedusindDB;" +
+                "Integrated Security=true;");
+                conn.Open();
+                return conn;
+        }
+
+        public int EmployeeId { get; set;}
+        public string EmpName { get; set;}
+        public int EmpSal { get; set;}
+        public char EmpType{ get; set;}
+
+
+        public static void GetEmployee()
+        {
+            Console.WriteLine("Enter Employee Id:");
+            EmployeeId = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Employee Name :");
+            EmpName = Console.ReadLine();
+            Console.WriteLine("Enter Employee Salary:");
+            EmpSal = Convert.ToSingle(Console.ReadLine());
+            Console.WriteLine("Enter Employee Type:- (P for PartTime and F for FullTime)::");
+            EmpType = Char.Parse(Console.ReadLine());
+        }
+
+        static void DisplayEmployee()
+        {
+            Console.WriteLine("Employee Details:");
+
+            try
+            {
+                conn = getconnection();
+                SqlDataReader dr;
+                string S = "Select * from Code_Employee";
+                cmd = new SqlCommand(S, conn);
+                dr = cmd.ExecuteReader();
+
+                while(dr.Read())
+                {
+                    Console.WriteLine(dr["EmployeeId"]+ " "+ dr["EmpName"]+ " "+ dr["EmpSal"]+ " "+ dr["EmpType"]);
+
+                }
+            }
+            catch(SqlException SE)
+            {
+                Console.WriteLine(SE.Message);
+            }
+            finally()
+            {
+                conn.Close();
+            }
+        }
+
+        static void CallProcedure()
+        {
+            conn = getConnection();
+            Console.WriteLine(Provide data to Insert into Employee Table:);
+            GetEmployee();
+
+            cmd = new SqlCommand("EnterNewRecords", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@EmpNo", EmployeeId);
+            cmd.Parameters.AddWithValue("@EName", EmpName);
+            cmd.Parameters.AddWithValue("@ESal", EmpSal);
+            cmd.Parameters.AddWithValue("@EType", EmpType );
+
+            
+            int NoOfRows = cmd.ExecuteNonQuery();
+            if(NoOfRows>0)
+            {
+                Console.WriteLine("Record Inserted Successfully");
+            }
+            else
+            {
+                Console.WriteLine("Insertion Failed..");
+
+            }
+        }
+
+        static void Main()
+        {
+            CallProcedure();
+            DisplayEmployee();
+            Console.Read();
+        }
+    }
+}
+
+
+
+
+   
+

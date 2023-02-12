@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MVCPrjNW.Models.Customer>
+@{
+    ViewBag.Title = "GetCustomerResidingInGermany";
+}
+
+
+<h2>Getting Customer Residing In Germany</h2>
+
+@foreach (var item in Model)
+{
+    <ul>
+        <li>Customer Id : @item.CustomerID</li>
+        <li>Company Name : @item.CompanyName</li>
+        <li>Contact Name : @item.ContactName</li>
+        <li>City : @item.City</li>
+        <li>Country : @item.Country</li>
+        <li>Address : @item.Address</li>
+        <li>Phone : @item.Phone</li>
+    </ul>
+
+
+}
+
+
